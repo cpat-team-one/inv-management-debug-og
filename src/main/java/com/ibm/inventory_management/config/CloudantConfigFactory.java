@@ -4,8 +4,12 @@ import java.io.IOException;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
+//@Configuration
+//@Primary
 @Component
 public class CloudantConfigFactory {
     @Bean
@@ -17,9 +21,13 @@ public class CloudantConfigFactory {
     }
 
     protected String loadCloudantConfig() throws IOException {
-        return System.getProperty("CLOUDANT_CONFIG") != null
+        String result=  System.getProperty("CLOUDANT_CONFIG") != null
                 ? System.getProperty("CLOUDANT_CONFIG")
                 : loadCloudantMappingFromLocalDev().getCloudantConfig();
+
+        System.out.println("******************************** Result: " + result);
+
+        return result;
     }
 
     protected CloudantMapping loadCloudantMappingFromLocalDev() throws IOException {

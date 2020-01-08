@@ -18,7 +18,7 @@ public class Application extends SpringBootServletInitializer {
     Environment environment;
 
     public static void main(String[] args) {
-        SpringApplication.run(com.ibm.inventory_management.app.Application.class, args);
+        SpringApplication.run(Application.class, args);
     }
 
     @Bean
